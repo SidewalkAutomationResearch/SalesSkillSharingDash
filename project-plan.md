@@ -1,16 +1,20 @@
 # Sales Skills Dashboard - Project Plan
 
-**Date & Time:** 2025-07-25 (Updated: 2025-07-25 - Skills Matrix Rebuild) 
+**Date & Time:** 2025-07-25 (Updated: 2025-07-25 - Expert Designer Mode) 
 
-## Current Tasks - Skills Matrix Rebuild
+## Current Tasks - Expert Designer Mode
 
-User requested: "use claude.md expert instructions. The skills matrix is unreadable. Look at the code, delete it, and rebuild it in a way that's more compact like a heatmap. Make it super modern and attractive."
+User requested: "You are now expert designer, find best name to use. in find experts by skill section, the result is still white theme. Make match current site. Add touches of blue and red in a professional color theme throughout site; be creative."
 
-### Analysis of Current Skills Matrix
-- Located at: `/src/components/skills/SkillsMatrix.tsx`
-- Current format: Traditional table with color-coded skill levels
-- Problem: Unreadable and not compact
-- Solution needed: Compact heatmap format with modern design
+### Analysis Tasks
+- Find optimal name for the application
+- Fix Expert Network (find experts by skill) white theme issue
+- Add professional blue and red accents throughout site
+- Ensure creative but professional design consistency
+
+## Previous Tasks - Skills Matrix Rebuild (DEFERRED)
+
+User requested: "use claude.md expert instructions. The skills matrix is unreadable. Look at the code, delete it, and rebuild it in a way that's more compact like a heatmap. Make it super modern and attractive." - DEFERRED for design fixes
 
 ## Previous Tasks - COMPLETED
 
@@ -20,17 +24,17 @@ User requested: "claude.md expert, remove all custom color themes and revert to 
 
 The medium dark mode implementation has broken the application. User requested: "That broke everything. revert to previous build, then make a basic very dark gray background with red and blue color as appropriate. push" - COMPLETED
 
-## Skills Matrix Rebuild To-Do Items
+## Expert Designer To-Do Items
 
-- [ ] Examine current SkillsMatrix.tsx component structure and data flow
-- [ ] Delete the existing unreadable skills matrix implementation
-- [ ] Design compact heatmap layout using CSS Grid
-- [ ] Implement modern visual design with GitHub dark theme colors
-- [ ] Create hover effects and tooltips for skill details
-- [ ] Add smooth animations and transitions
-- [ ] Ensure responsive design for mobile/tablet
-- [ ] Test the new heatmap matrix functionality
-- [ ] Commit and push the rebuilt skills matrix
+- [ ] Research and propose optimal application name (creative but professional)
+- [ ] Examine Expert Network component for white theme issues
+- [ ] Fix Expert Network styling to match GitHub dark theme
+- [ ] Add strategic blue accents throughout site for trust/technology
+- [ ] Add strategic red accents for urgency/alerts/calls-to-action
+- [ ] Enhance navigation with professional color touches
+- [ ] Update cards and components with subtle accent colors
+- [ ] Test complete design consistency across all pages
+- [ ] Commit and push professional color enhancement
 
 ## Previous To-Do Items - COMPLETED
 

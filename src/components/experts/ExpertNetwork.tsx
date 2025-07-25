@@ -10,9 +10,9 @@ import { SkillCategory } from '@/types/skills';
 
 const AvailabilityBadge = ({ availability }: { availability: string }) => {
   const config = {
-    available: { color: 'bg-success/10 text-success border border-success/20', text: 'Available' },
+    available: { color: 'bg-accent-blue/10 text-accent-blue border border-accent-blue/20', text: 'Available' },
     busy: { color: 'bg-warning/10 text-warning border border-warning/20', text: 'Busy' },
-    offline: { color: 'bg-secondary text-foreground border border-border', text: 'Offline' }
+    offline: { color: 'bg-muted text-muted-foreground border border-border', text: 'Offline' }
   };
   
   const { color, text } = config[availability as keyof typeof config] || config.offline;
@@ -73,39 +73,107 @@ export function ExpertNetwork() {
             Find and connect with subject matter experts across the organization
           </p>
         </div>
-        <Button variant="deep-green">
-          <MessageCircle className="w-4 h-4 mr-2" />
+        <Button variant="destructive" className="h-8 px-3 py-1.5 text-sm">
+          <MessageCircle className="w-3 h-3 mr-1" />
           Start Group Chat
         </Button>
       </div>
 
-      {/* Search and Filters */}
+      {/* Skills-Based Expert Matching - Moved to Top */}
       <Card>
-        <CardContent className="pt-6">
-          <div className="flex gap-4 items-center">
+        <CardHeader className="pb-4">
+          <CardTitle className="text-lg">Find Experts by Skill</CardTitle>
+          <CardDescription className="text-xs">
+            Select a skill to find available experts who can help
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="pb-4">
+          <div className="grid gap-2 md:grid-cols-3 lg:grid-cols-4">
+            {skills.map((skill) => {
+              const expertsForSkill = getExpertsBySkill(skill.id);
+              return (
+                <div
+                  key={skill.id}
+                  className={`p-3 border rounded cursor-pointer transition-colors hover:bg-muted/50 text-xs ${
+                    selectedSkill?.id === skill.id 
+                      ? 'border-primary bg-primary/10' 
+                      : 'border-border bg-card hover:bg-muted/30'
+                  }`}
+                  onClick={() => setSelectedSkill(selectedSkill?.id === skill.id ? null : skill)}
+                >
+                  <div className="font-medium mb-1">{skill.name}</div>
+                  <div className="text-muted-foreground mb-1">
+                    {skill.category}
+                  </div>
+                  <div>
+                    <span className="font-medium text-primary">
+                      {expertsForSkill.length}
+                    </span>
+                    <span className="text-muted-foreground"> experts</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          
+          {selectedSkill && (
+            <div className="mt-4 p-3 border rounded-lg bg-card border-border">
+              <h4 className="font-medium mb-2 text-sm">
+                Experts in {selectedSkill.name}:
+              </h4>
+              <div className="grid gap-2 md:grid-cols-2">
+                {getExpertsBySkill(selectedSkill.id).map((expert) => (
+                  <div key={expert.id} className="flex items-center justify-between p-2 bg-card rounded border border-border hover:bg-muted/30 transition-colors">
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center text-xs">
+                        {expert.name.split(' ').map(n => n[0]).join('')}
+                      </div>
+                      <div>
+                        <div className="font-medium text-sm">{expert.name}</div>
+                        <div className="text-xs text-muted-foreground">{expert.role}</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <AvailabilityBadge availability={expert.availability} />
+                      <Button variant="outline" className="h-6 px-2 text-xs">
+                        Contact
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+
+      {/* Search and Filters - Moved to Top */}
+      <Card>
+        <CardContent className="pt-4">
+          <div className="flex gap-3 items-center">
             <div className="relative flex-1">
-              <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
+              <Search className="w-3 h-3 absolute left-2 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
               <input
                 type="text"
                 placeholder="Search experts by name or role..."
-                className="w-full pl-10 pr-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full pl-7 pr-3 py-1.5 text-sm border rounded focus:outline-none focus:ring-1 focus:ring-primary"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
             <Select.Root value={selectedCategory} onValueChange={(value: string) => setSelectedCategory(value as SkillCategory | 'all')}>
-              <Select.Trigger className="inline-flex items-center justify-center rounded px-4 py-2 text-sm bg-white border hover:bg-gray-50 focus:shadow-[0_0_0_2px] focus:shadow-primary outline-none">
+              <Select.Trigger className="inline-flex items-center justify-center rounded px-3 py-1.5 text-xs bg-card border-border border hover:bg-muted focus:shadow-[0_0_0_1px] focus:shadow-primary outline-none text-card-foreground">
                 <Select.Value placeholder="All Categories" />
-                <Select.Icon className="ml-2" />
+                <Select.Icon className="ml-1" />
               </Select.Trigger>
               <Select.Portal>
-                <Select.Content className="overflow-hidden bg-white rounded-md shadow-lg border">
+                <Select.Content className="overflow-hidden bg-popover rounded-md shadow-lg border-border border text-popover-foreground text-xs">
                   <Select.Viewport className="p-1">
-                    <Select.Item value="all" className="relative flex items-center px-8 py-2 text-sm rounded hover:bg-gray-100 cursor-pointer">
+                    <Select.Item value="all" className="relative flex items-center px-6 py-1.5 rounded hover:bg-muted cursor-pointer">
                       <Select.ItemText>All Categories</Select.ItemText>
                     </Select.Item>
                     {Object.values(SkillCategory).map((category) => (
-                      <Select.Item key={category} value={category} className="relative flex items-center px-8 py-2 text-sm rounded hover:bg-gray-100 cursor-pointer">
+                      <Select.Item key={category} value={category} className="relative flex items-center px-6 py-1.5 rounded hover:bg-muted cursor-pointer">
                         <Select.ItemText className="capitalize">{category}</Select.ItemText>
                       </Select.Item>
                     ))}
@@ -117,59 +185,59 @@ export function ExpertNetwork() {
         </CardContent>
       </Card>
 
-      {/* Expert Grid */}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {/* Expert Grid - Reduced Size and Moved to Bottom */}
+      <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
         {filteredExperts.map((expert) => {
           const expertSkills = getExpertSkills(expert.id);
           return (
-            <Card key={expert.id} className="hover:shadow-lg transition-shadow">
-              <CardHeader className="pb-3">
+            <Card key={expert.id} className="hover:shadow-md transition-shadow">
+              <CardHeader className="pb-2">
                 <div className="flex items-start justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                      <User className="w-6 h-6 text-primary" />
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                      <User className="w-4 h-4 text-primary" />
                     </div>
                     <div>
-                      <CardTitle className="text-lg">{expert.name}</CardTitle>
-                      <CardDescription>{expert.role}</CardDescription>
+                      <CardTitle className="text-sm">{expert.name}</CardTitle>
+                      <CardDescription className="text-xs">{expert.role}</CardDescription>
                     </div>
                   </div>
                   <AvailabilityBadge availability={expert.availability} />
                 </div>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-2 py-2">
                 <div>
-                  <h4 className="font-medium mb-2">Expert In:</h4>
+                  <h4 className="font-medium text-xs mb-1">Expert In:</h4>
                   <div className="flex flex-wrap gap-1">
-                    {expertSkills.slice(0, 4).map((skill) => (
+                    {expertSkills.slice(0, 3).map((skill) => (
                       <span
                         key={skill?.id}
-                        className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-primary/10 text-primary"
+                        className="inline-flex items-center px-1.5 py-0.5 rounded-full text-xs bg-primary/10 text-primary"
                       >
                         {skill?.name}
                       </span>
                     ))}
-                    {expertSkills.length > 4 && (
-                      <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-muted text-muted-foreground">
-                        +{expertSkills.length - 4} more
+                    {expertSkills.length > 3 && (
+                      <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-xs bg-muted text-muted-foreground">
+                        +{expertSkills.length - 3} more
                       </span>
                     )}
                   </div>
                 </div>
                 
-                <div className="flex gap-2">
-                  <Button size="sm" className="flex-1">
-                    <MessageCircle className="w-4 h-4 mr-2" />
+                <div className="flex gap-1">
+                  <Button className="flex-1 h-6 px-2 text-xs">
+                    <MessageCircle className="w-3 h-3 mr-1" />
                     Message
                   </Button>
-                  <Button size="sm" variant="outline" className="flex-1">
-                    <Calendar className="w-4 h-4 mr-2" />
+                  <Button variant="outline" className="flex-1 h-6 px-2 text-xs">
+                    <Calendar className="w-3 h-3 mr-1" />
                     Schedule
                   </Button>
                 </div>
                 
                 <div className="text-xs text-muted-foreground flex items-center">
-                  <Clock className="w-3 h-3 mr-1" />
+                  <Clock className="w-2.5 h-2.5 mr-1" />
                   Usually responds within 2 hours
                 </div>
               </CardContent>
@@ -177,72 +245,6 @@ export function ExpertNetwork() {
           );
         })}
       </div>
-
-      {/* Skills-Based Expert Matching */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Find Experts by Skill</CardTitle>
-          <CardDescription>
-            Select a skill to find available experts who can help
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {skills.map((skill) => {
-              const expertsForSkill = getExpertsBySkill(skill.id);
-              return (
-                <div
-                  key={skill.id}
-                  className={`p-4 border rounded-lg cursor-pointer transition-colors hover:bg-muted/50 ${
-                    selectedSkill?.id === skill.id ? 'border-primary bg-primary/5' : ''
-                  }`}
-                  onClick={() => setSelectedSkill(selectedSkill?.id === skill.id ? null : skill)}
-                >
-                  <div className="font-medium mb-1">{skill.name}</div>
-                  <div className="text-sm text-muted-foreground mb-2">
-                    {skill.category}
-                  </div>
-                  <div className="text-sm">
-                    <span className="font-medium text-primary">
-                      {expertsForSkill.length}
-                    </span>
-                    <span className="text-muted-foreground"> experts available</span>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-          
-          {selectedSkill && (
-            <div className="mt-6 p-4 border rounded-lg bg-muted/20">
-              <h4 className="font-medium mb-3">
-                Experts in {selectedSkill.name}:
-              </h4>
-              <div className="grid gap-3 md:grid-cols-2">
-                {getExpertsBySkill(selectedSkill.id).map((expert) => (
-                  <div key={expert.id} className="flex items-center justify-between p-3 bg-white rounded border">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                        {expert.name.split(' ').map(n => n[0]).join('')}
-                      </div>
-                      <div>
-                        <div className="font-medium">{expert.name}</div>
-                        <div className="text-sm text-muted-foreground">{expert.role}</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <AvailabilityBadge availability={expert.availability} />
-                      <Button size="sm" variant="outline">
-                        Contact
-                      </Button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-        </CardContent>
-      </Card>
     </div>
   );
 }

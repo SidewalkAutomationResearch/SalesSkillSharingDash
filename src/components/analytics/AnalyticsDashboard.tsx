@@ -32,13 +32,14 @@ export function AnalyticsDashboard() {
     };
   });
 
-  // Calculate category performance
+  // Calculate category performance with better scaling
   interface CategoryAcc {
     [key: string]: {
       category: string;
       skills: typeof skills;
       totalGap: number;
       assessmentCount: number;
+      maxGap: number;
     };
   }
   
@@ -48,7 +49,8 @@ export function AnalyticsDashboard() {
         category: skill.category,
         skills: [],
         totalGap: 0,
-        assessmentCount: 0
+        assessmentCount: 0,
+        maxGap: 0
       };
     }
     
@@ -58,11 +60,13 @@ export function AnalyticsDashboard() {
     acc[skill.category].skills.push(skill);
     acc[skill.category].totalGap += skillGap;
     acc[skill.category].assessmentCount += skillAssessmentCount;
+    acc[skill.category].maxGap = Math.max(acc[skill.category].maxGap, skillGap);
     
     return acc;
   }, {})).map((cat) => ({
     name: cat.category.replace(/_/g, ' ').replace(/\b\w/g, (l: string) => l.toUpperCase()),
     gap: Math.max(0.1, Number((cat.totalGap / cat.skills.length).toFixed(1))), // Average gap per skill, minimum 0.1 for visibility
+    maxGap: cat.maxGap,
     coverage: Math.round((cat.assessmentCount / (cat.skills.length * employees.length)) * 100)
   }));
 
@@ -90,13 +94,13 @@ export function AnalyticsDashboard() {
 
       {/* Key Metrics */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card className="bg-card border-border">
+        <Card className="bg-card border-border border-l-4 border-l-accent-blue">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-foreground">Total Team Members</CardTitle>
-            <Users className="h-4 w-4 text-primary" />
+            <Users className="h-4 w-4 text-accent-blue" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-foreground">{metrics.totalEmployees}</div>
+            <div className="text-2xl font-bold text-accent-blue">{metrics.totalEmployees}</div>
             <p className="text-xs text-success font-medium">
               +12% from last month
             </p>
@@ -363,7 +367,7 @@ export function AnalyticsDashboard() {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-red-100 text-red-800">
+                  <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-accent-red/10 text-accent-red font-medium border border-accent-red/20">
                     Critical
                   </span>
                 </div>

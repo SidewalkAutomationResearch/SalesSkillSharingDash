@@ -3,7 +3,7 @@
 import { useDashboardStore } from '@/store/dashboard-store';
 import { TopBanner } from '@/components/layout/TopBanner';
 import { Navigation } from '@/components/layout/Navigation';
-import { SkillsMatrix } from '@/components/skills/SkillsMatrix';
+import { SkillsHeatmap } from '@/components/skills/SkillsHeatmap';
 import { ExpertNetwork } from '@/components/experts/ExpertNetwork';
 import { TrainingDashboard } from '@/components/training/TrainingDashboard';
 import { AnalyticsDashboard } from '@/components/analytics/AnalyticsDashboard';
@@ -15,7 +15,7 @@ export default function Home() {
   const renderActiveView = () => {
     switch (activeView) {
       case 'skills':
-        return <SkillsMatrix />;
+        return <SkillsHeatmap />;
       case 'experts':
         return <ExpertNetwork />;
       case 'training':
@@ -25,7 +25,7 @@ export default function Home() {
       case 'knowledge':
         return <KnowledgeBase />;
       default:
-        return <SkillsMatrix />;
+        return <SkillsHeatmap />;
     }
   };
 

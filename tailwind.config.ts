@@ -63,6 +63,12 @@ export default {
         "github-purple": "#8b5cf6",
         "github-orange": "#fb8500",
         "github-red": "#f85149",
+        
+        // Professional accent colors for creative touches
+        "accent-blue": "#1e40af", // Deep professional blue
+        "accent-blue-light": "#3b82f6", // Lighter blue for highlights
+        "accent-red": "#dc2626", // Professional red
+        "accent-red-light": "#ef4444", // Lighter red for alerts
       },
       borderRadius: {
         lg: "var(--radius)",

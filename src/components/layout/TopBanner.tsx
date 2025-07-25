@@ -9,7 +9,7 @@ export function TopBanner() {
   if (!isVisible) return null;
 
   return (
-    <div className="bg-accent text-accent-foreground px-4 py-2 text-xs border-b border-accent/20">
+    <div className="bg-muted text-muted-foreground px-4 py-2 text-xs border-b border-border">
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center gap-4">
           <span className="font-medium">
