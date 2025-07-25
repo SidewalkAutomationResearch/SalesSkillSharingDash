@@ -52,9 +52,9 @@ export const sampleSkills: Skill[] = [
   },
   {
     id: '8',
-    name: 'Financial Services',
+    name: 'HR / AI Tech',
     category: SkillCategory.INDUSTRY,
-    description: 'Understanding of fintech and banking solutions',
+    description: 'Understanding of HR technology and AI solutions',
     requiredLevel: 3
   }
 ];
@@ -66,6 +66,15 @@ export const sampleEmployees: Employee[] = [
     email: 'bradd.pitt@company.com',
     department: 'Sales Engineering',
     role: 'Senior Sales Engineer',
+    isExpert: true,
+    availability: 'available'
+  },
+  {
+    id: '15',
+    name: 'Will Eddy',
+    email: 'will.eddy@company.com',
+    department: 'Sales Engineering',
+    role: 'Sales Engineer',
     isExpert: true,
     availability: 'available'
   },
@@ -260,7 +269,17 @@ export const sampleSkillAssessments: SkillAssessment[] = [
   // Robert Downey - Expert
   { employeeId: '14', skillId: '7', currentLevel: 5, targetLevel: 5, lastAssessed: '2024-01-21', assessedBy: 'manager', certifications: ['AWS Solutions Architect', 'GCP Professional'] },
   { employeeId: '14', skillId: '3', currentLevel: 5, targetLevel: 5, lastAssessed: '2024-01-21', assessedBy: 'manager', certifications: ['TOGAF'] },
-  { employeeId: '14', skillId: '1', currentLevel: 4, targetLevel: 5, lastAssessed: '2024-01-21', assessedBy: 'manager', certifications: [] }
+  { employeeId: '14', skillId: '1', currentLevel: 4, targetLevel: 5, lastAssessed: '2024-01-21', assessedBy: 'manager', certifications: [] },
+  
+  // Will Eddy
+  { employeeId: '15', skillId: '1', currentLevel: 4, targetLevel: 4, lastAssessed: '2024-01-22', assessedBy: 'manager', certifications: [] }, // Technical Demos
+  { employeeId: '15', skillId: '2', currentLevel: 2, targetLevel: 2, lastAssessed: '2024-01-22', assessedBy: 'manager', certifications: [] }, // Salesforce Administration
+  { employeeId: '15', skillId: '3', currentLevel: 3, targetLevel: 3, lastAssessed: '2024-01-22', assessedBy: 'manager', certifications: [] }, // Solution Architecture
+  { employeeId: '15', skillId: '4', currentLevel: 4, targetLevel: 4, lastAssessed: '2024-01-22', assessedBy: 'manager', certifications: [] }, // Customer Discovery
+  { employeeId: '15', skillId: '5', currentLevel: 4, targetLevel: 4, lastAssessed: '2024-01-22', assessedBy: 'manager', certifications: [] }, // API Integration
+  { employeeId: '15', skillId: '6', currentLevel: 4, targetLevel: 4, lastAssessed: '2024-01-22', assessedBy: 'manager', certifications: [] }, // Presentation Skills
+  { employeeId: '15', skillId: '7', currentLevel: 3, targetLevel: 3, lastAssessed: '2024-01-22', assessedBy: 'manager', certifications: [] }, // Cloud Architecture
+  { employeeId: '15', skillId: '8', currentLevel: 4, targetLevel: 4, lastAssessed: '2024-01-22', assessedBy: 'manager', certifications: [] } // HR / AI Tech
 ];
 
 export const sampleTrainingPrograms: TrainingProgram[] = [
@@ -284,7 +303,7 @@ export const sampleTrainingPrograms: TrainingProgram[] = [
   },
   {
     id: '3',
-    name: 'Financial Services Solutions',
+    name: 'HR / AI Tech Solutions',
     skillIds: ['8'],
     duration: 12,
     completionRate: 78,
