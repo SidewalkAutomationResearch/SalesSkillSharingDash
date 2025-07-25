@@ -57,15 +57,14 @@ export default {
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         
-        // Direct color utilities for dark theme charts
-        "emerald-green": "#34D399",
-        "golden-yellow": "#FBBF24",
-        "deep-green-direct": "#065F46",
-        "soft-white": "#E5E7EB",
-        "dark-slate": "#1C2026",
-        "card-gray": "#262A30",
-        "border-gray": "#4B5563",
-        "muted-gray": "#9CA3AF",
+        // Direct color utilities for chart colors
+        "emerald-green": "#2ECC40",
+        "golden-yellow": "#FFC93C",
+        "deep-green-direct": "#097969",
+        "charcoal-gray": "#23272F",
+        "light-gray": "#F6F7FA",
+        "medium-gray": "#D9DDE3",
+        "light-muted": "#C4C7CE",
       },
       borderRadius: {
         lg: "var(--radius)",

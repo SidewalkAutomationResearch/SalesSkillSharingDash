@@ -9,7 +9,7 @@ export function TopBanner() {
   if (!isVisible) return null;
 
   return (
-    <div className="bg-yellow-100 text-amber-900 px-4 py-2 text-xs border-b border-yellow-200 relative z-50" style={{ backgroundColor: '#F7E98B', color: '#451A03' }}>
+    <div className="bg-warning text-warning-foreground px-4 py-2 text-xs border-b border-warning/20">
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center gap-4">
           <span className="font-medium">
@@ -39,9 +39,8 @@ export function TopBanner() {
         </div>
         <button
           onClick={() => setIsVisible(false)}
-          className="flex items-center justify-center w-5 h-5 rounded hover:bg-amber-900/10 transition-colors"
+          className="flex items-center justify-center w-5 h-5 rounded hover:bg-warning-foreground/10 transition-colors"
           aria-label="Close banner"
-          style={{ color: '#451A03' }}
         >
           <X className="w-3 h-3" />
         </button>
