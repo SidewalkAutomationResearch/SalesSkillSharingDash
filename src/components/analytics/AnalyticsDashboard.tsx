@@ -5,18 +5,19 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { TrendingUp, Users, Award, AlertTriangle } from 'lucide-react';
 
-// Sales Dashboard Theme Colors
+// Medium Dark Mode Theme Colors - Optimized for Readability
 const THEME_COLORS = {
-  emeraldGreen: '#2ECC40',
-  goldenYellow: '#FFC93C', 
-  deepGreen: '#097969',
-  charcoalGray: '#23272F',
-  lightGray: '#F6F7FA',
-  mediumGray: '#D9DDE3',
-  lightMuted: '#C4C7CE'
+  emeraldGreen: '#34D399',      // Bright emerald for visibility on dark
+  goldenYellow: '#FBBF24',      // Vibrant yellow for highlights
+  deepGreen: '#065F46',         // Deep forest green for contrast
+  softWhite: '#E5E7EB',         // Soft white for text
+  darkSlate: '#1C2026',         // Deep slate background
+  cardGray: '#262A30',          // Elevated card background
+  borderGray: '#4B5563',        // Subtle borders
+  mutedGray: '#9CA3AF'          // Muted text
 };
 
-const CHART_COLORS = [THEME_COLORS.emeraldGreen, THEME_COLORS.goldenYellow, THEME_COLORS.deepGreen, THEME_COLORS.lightMuted, THEME_COLORS.charcoalGray];
+const CHART_COLORS = [THEME_COLORS.emeraldGreen, THEME_COLORS.goldenYellow, THEME_COLORS.deepGreen, THEME_COLORS.borderGray, THEME_COLORS.mutedGray];
 
 export function AnalyticsDashboard() {
   const { 
@@ -165,23 +166,23 @@ export function AnalyticsDashboard() {
           <CardContent>
             <ResponsiveContainer width="100%" height={350}>
               <BarChart data={skillDistribution} margin={{ top: 20, right: 30, left: 20, bottom: 80 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke={THEME_COLORS.lightMuted} />
+                <CartesianGrid strokeDasharray="3 3" stroke={THEME_COLORS.borderGray} />
                 <XAxis 
                   dataKey="name" 
                   angle={-45}
                   textAnchor="end"
                   height={80}
                   fontSize={10}
-                  stroke={THEME_COLORS.charcoalGray}
+                  stroke={THEME_COLORS.softWhite}
                   interval={0}
                 />
-                <YAxis stroke={THEME_COLORS.charcoalGray} />
+                <YAxis stroke={THEME_COLORS.softWhite} />
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: THEME_COLORS.mediumGray, 
-                    border: `1px solid ${THEME_COLORS.lightMuted}`,
+                    backgroundColor: THEME_COLORS.cardGray, 
+                    border: `1px solid ${THEME_COLORS.borderGray}`,
                     borderRadius: '8px',
-                    color: THEME_COLORS.charcoalGray
+                    color: THEME_COLORS.softWhite
                   }}
                   formatter={(value: number, name: string) => [
                     `${value} / 5`,
@@ -226,10 +227,10 @@ export function AnalyticsDashboard() {
                 </Pie>
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: THEME_COLORS.mediumGray, 
-                    border: `1px solid ${THEME_COLORS.lightMuted}`,
+                    backgroundColor: THEME_COLORS.cardGray, 
+                    border: `1px solid ${THEME_COLORS.borderGray}`,
                     borderRadius: '8px',
-                    color: THEME_COLORS.charcoalGray
+                    color: THEME_COLORS.softWhite
                   }}
                   formatter={(value: number, name: string) => [
                     `${value} gaps`,
@@ -254,15 +255,15 @@ export function AnalyticsDashboard() {
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={categoryPerformance} layout="horizontal">
-                <CartesianGrid strokeDasharray="3 3" stroke={THEME_COLORS.lightMuted} />
-                <XAxis type="number" stroke={THEME_COLORS.charcoalGray} />
-                <YAxis dataKey="name" type="category" width={100} stroke={THEME_COLORS.charcoalGray} />
+                <CartesianGrid strokeDasharray="3 3" stroke={THEME_COLORS.borderGray} />
+                <XAxis type="number" stroke={THEME_COLORS.softWhite} />
+                <YAxis dataKey="name" type="category" width={100} stroke={THEME_COLORS.softWhite} />
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: THEME_COLORS.mediumGray, 
-                    border: `1px solid ${THEME_COLORS.lightMuted}`,
+                    backgroundColor: THEME_COLORS.cardGray, 
+                    border: `1px solid ${THEME_COLORS.borderGray}`,
                     borderRadius: '8px',
-                    color: THEME_COLORS.charcoalGray
+                    color: THEME_COLORS.softWhite
                   }} 
                 />
                 <Bar dataKey="gap" fill={THEME_COLORS.goldenYellow} name="Average Gap" />
@@ -281,22 +282,22 @@ export function AnalyticsDashboard() {
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={trainingData}>
-                <CartesianGrid strokeDasharray="3 3" stroke={THEME_COLORS.lightMuted} />
+                <CartesianGrid strokeDasharray="3 3" stroke={THEME_COLORS.borderGray} />
                 <XAxis 
                   dataKey="name" 
                   angle={-45}
                   textAnchor="end"
                   height={80}
                   fontSize={12}
-                  stroke={THEME_COLORS.charcoalGray}
+                  stroke={THEME_COLORS.softWhite}
                 />
-                <YAxis stroke={THEME_COLORS.charcoalGray} />
+                <YAxis stroke={THEME_COLORS.softWhite} />
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: THEME_COLORS.mediumGray, 
-                    border: `1px solid ${THEME_COLORS.lightMuted}`,
+                    backgroundColor: THEME_COLORS.cardGray, 
+                    border: `1px solid ${THEME_COLORS.borderGray}`,
                     borderRadius: '8px',
-                    color: THEME_COLORS.charcoalGray
+                    color: THEME_COLORS.softWhite
                   }} 
                 />
                 <Bar dataKey="completion" fill={THEME_COLORS.emeraldGreen} name="Completion %" />

@@ -2,7 +2,37 @@
 
 @layer base {
   :root {
-    /* Sales Dashboard Theme - Gray, Green, Yellow */
+    /* Medium Dark Mode Theme - Optimized for Readability */
+    --background: 28 32 38; /* #1C2026 - Deep Slate Background */
+    --foreground: 229 231 235; /* #E5E7EB - Soft White Text */
+    --card: 38 42 48; /* #262A30 - Elevated Card Background */
+    --card-foreground: 229 231 235; /* #E5E7EB - Soft White Text */
+    --popover: 38 42 48; /* #262A30 - Elevated Background */
+    --popover-foreground: 229 231 235; /* #E5E7EB - Soft White Text */
+    --primary: 52 211 153; /* #34D399 - Bright Emerald Green */
+    --primary-foreground: 17 24 39; /* #111827 - Dark Text on Green */
+    --secondary: 55 65 81; /* #374151 - Medium Gray */
+    --secondary-foreground: 209 213 219; /* #D1D5DB - Light Gray Text */
+    --muted: 55 65 81; /* #374151 - Medium Gray */
+    --muted-foreground: 156 163 175; /* #9CA3AF - Muted Text */
+    --accent: 251 191 36; /* #FBBF24 - Vibrant Yellow */
+    --accent-foreground: 17 24 39; /* #111827 - Dark Text on Yellow */
+    --success: 52 211 153; /* #34D399 - Bright Emerald Green */
+    --success-foreground: 17 24 39; /* #111827 - Dark Text on Green */
+    --warning: 251 191 36; /* #FBBF24 - Vibrant Yellow */
+    --warning-foreground: 17 24 39; /* #111827 - Dark Text on Yellow */
+    --deep-green: 6 95 70; /* #065F46 - Deep Forest Green */
+    --deep-green-foreground: 229 231 235; /* #E5E7EB - Light Text */
+    --destructive: 248 113 113; /* #F87171 - Soft Red */
+    --destructive-foreground: 17 24 39; /* #111827 - Dark Text */
+    --border: 75 85 99; /* #4B5563 - Subtle Border */
+    --input: 55 65 81; /* #374151 - Input Background */
+    --ring: 52 211 153; /* #34D399 - Green Focus Ring */
+    --radius: 0.75rem;
+  }
+
+  .light {
+    /* Light mode (optional fallback) */
     --background: 246 247 250; /* #F6F7FA - Light Gray */
     --foreground: 35 39 47; /* #23272F - Charcoal Gray */
     --card: 217 221 227; /* #D9DDE3 - Medium Gray */
@@ -28,36 +58,6 @@
     --border: 196 199 206; /* #C4C7CE - Light Muted */
     --input: 217 221 227; /* #D9DDE3 - Medium Gray */
     --ring: 46 204 64; /* #2ECC40 - Emerald Green */
-    --radius: 0.75rem;
-  }
-
-  .dark {
-    /* Dark mode maintaining the same relationships */
-    --background: 35 39 47; /* #23272F - Charcoal Gray */
-    --foreground: 246 247 250; /* #F6F7FA - Light Gray */
-    --card: 40 44 52; /* Slightly lighter than background */
-    --card-foreground: 246 247 250; /* #F6F7FA - Light Gray */
-    --popover: 40 44 52;
-    --popover-foreground: 246 247 250;
-    --primary: 46 204 64; /* #2ECC40 - Emerald Green */
-    --primary-foreground: 35 39 47; /* #23272F - Charcoal Gray */
-    --secondary: 50 54 62;
-    --secondary-foreground: 246 247 250;
-    --muted: 50 54 62;
-    --muted-foreground: 196 199 206;
-    --accent: 255 201 60; /* #FFC93C - Golden Yellow */
-    --accent-foreground: 35 39 47; /* #23272F - Charcoal Gray */
-    --success: 46 204 64;
-    --success-foreground: 35 39 47;
-    --warning: 255 201 60;
-    --warning-foreground: 35 39 47;
-    --deep-green: 9 121 105;
-    --deep-green-foreground: 246 247 250;
-    --destructive: 239 68 68;
-    --destructive-foreground: 246 247 250;
-    --border: 60 64 72;
-    --input: 50 54 62;
-    --ring: 46 204 64;
   }
 }
 
