@@ -52,7 +52,8 @@ export function Navigation() {
     <div className="border-b border-border bg-background shadow-sm">
       <div className="container flex h-16 items-center px-4">
         <div className="mr-8">
-          <h1 className="text-xl font-bold text-foreground">Sales Engineering Skills Dashboard</h1>
+          <h1 className="text-xl font-bold text-foreground">Superpower Attainment Framework</h1>
+          <p className="text-xs text-muted-foreground">Sales Engineering Skills Dashboard</p>
         </div>
         
         <nav className="flex items-center space-x-2 lg:space-x-4">

@@ -62,7 +62,7 @@ export function SkillsMatrix() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-3xl font-bold tracking-tight">Skills Matrix</h2>
+          <h2 className="text-3xl font-bold tracking-tight">Superpower Attainment Framework - Skills Matrix</h2>
           <p className="text-muted-foreground">
             View and manage team skill levels across all competencies
           </p>

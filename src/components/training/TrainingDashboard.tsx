@@ -48,7 +48,7 @@ export function TrainingDashboard() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-3xl font-bold tracking-tight">Training Dashboard</h2>
+          <h2 className="text-3xl font-bold tracking-tight">Superpower Attainment Framework - Training</h2>
           <p className="text-muted-foreground">
             Manage learning programs and track skill development progress
           </p>

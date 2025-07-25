@@ -113,6 +113,51 @@ export const sampleEmployees: Employee[] = [
     role: 'Sales Engineer',
     isExpert: false,
     availability: 'available'
+  },
+  {
+    id: '7',
+    name: 'Maria Santos',
+    email: 'maria.santos@company.com',
+    department: 'Sales Engineering',
+    role: 'Senior Sales Engineer',
+    isExpert: true,
+    availability: 'available'
+  },
+  {
+    id: '8',
+    name: 'Kevin Liu',
+    email: 'kevin.liu@company.com',
+    department: 'Sales Engineering',
+    role: 'Sales Engineer',
+    isExpert: false,
+    availability: 'busy'
+  },
+  {
+    id: '9',
+    name: 'Rachel Green',
+    email: 'rachel.green@company.com',
+    department: 'Sales Engineering',
+    role: 'Principal Sales Engineer',
+    isExpert: true,
+    availability: 'available'
+  },
+  {
+    id: '10',
+    name: 'Tommy Kim',
+    email: 'tommy.kim@company.com',
+    department: 'Sales Engineering',
+    role: 'Sales Engineer',
+    isExpert: false,
+    availability: 'available'
+  },
+  {
+    id: '11',
+    name: 'Elena Patel',
+    email: 'elena.patel@company.com',
+    department: 'Sales Engineering',
+    role: 'Senior Sales Engineer',
+    isExpert: true,
+    availability: 'offline'
   }
 ];
 
@@ -129,7 +174,17 @@ export const sampleSkillAssessments: SkillAssessment[] = [
   { employeeId: '5', skillId: '5', currentLevel: 4, targetLevel: 5, lastAssessed: '2024-01-14', assessedBy: 'manager', certifications: [] },
   { employeeId: '5', skillId: '8', currentLevel: 5, targetLevel: 5, lastAssessed: '2024-01-14', assessedBy: 'manager', certifications: ['CFA Level 1'] },
   { employeeId: '6', skillId: '1', currentLevel: 3, targetLevel: 4, lastAssessed: '2024-01-09', assessedBy: 'manager', certifications: [] },
-  { employeeId: '6', skillId: '4', currentLevel: 2, targetLevel: 4, lastAssessed: '2024-01-09', assessedBy: 'manager', certifications: [] }
+  { employeeId: '6', skillId: '4', currentLevel: 2, targetLevel: 4, lastAssessed: '2024-01-09', assessedBy: 'manager', certifications: [] },
+  { employeeId: '7', skillId: '3', currentLevel: 4, targetLevel: 5, lastAssessed: '2024-01-16', assessedBy: 'manager', certifications: ['TOGAF'] },
+  { employeeId: '7', skillId: '6', currentLevel: 5, targetLevel: 5, lastAssessed: '2024-01-16', assessedBy: 'manager', certifications: [] },
+  { employeeId: '8', skillId: '2', currentLevel: 3, targetLevel: 4, lastAssessed: '2024-01-11', assessedBy: 'manager', certifications: [] },
+  { employeeId: '8', skillId: '5', currentLevel: 2, targetLevel: 3, lastAssessed: '2024-01-11', assessedBy: 'manager', certifications: [] },
+  { employeeId: '9', skillId: '7', currentLevel: 5, targetLevel: 5, lastAssessed: '2024-01-17', assessedBy: 'manager', certifications: ['AWS Solutions Architect', 'Azure Architect'] },
+  { employeeId: '9', skillId: '8', currentLevel: 4, targetLevel: 5, lastAssessed: '2024-01-17', assessedBy: 'manager', certifications: ['CFA Level 2'] },
+  { employeeId: '10', skillId: '1', currentLevel: 2, targetLevel: 3, lastAssessed: '2024-01-13', assessedBy: 'manager', certifications: [] },
+  { employeeId: '10', skillId: '6', currentLevel: 3, targetLevel: 4, lastAssessed: '2024-01-13', assessedBy: 'manager', certifications: [] },
+  { employeeId: '11', skillId: '5', currentLevel: 4, targetLevel: 5, lastAssessed: '2024-01-18', assessedBy: 'manager', certifications: [] },
+  { employeeId: '11', skillId: '8', currentLevel: 5, targetLevel: 5, lastAssessed: '2024-01-18', assessedBy: 'manager', certifications: ['CFA Level 3'] }
 ];
 
 export const sampleTrainingPrograms: TrainingProgram[] = [
@@ -199,10 +254,10 @@ export const sampleKnowledgeResources: KnowledgeResource[] = [
 ];
 
 export const dashboardMetrics: DashboardMetrics = {
-  totalEmployees: 6,
-  averageSkillLevel: 3.4,
-  skillsGapCount: 8,
+  totalEmployees: 11,
+  averageSkillLevel: 3.6,
+  skillsGapCount: 12,
   trainingCompletionRate: 85,
-  expertAvailabilityRate: 75,
+  expertAvailabilityRate: 80,
   knowledgeSharingActivity: 94
 };

@@ -68,7 +68,7 @@ export function ExpertNetwork() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-3xl font-bold tracking-tight">Expert Network</h2>
+          <h2 className="text-3xl font-bold tracking-tight">Superpower Attainment Framework - Expert Network</h2>
           <p className="text-muted-foreground">
             Find and connect with subject matter experts across the organization
           </p>

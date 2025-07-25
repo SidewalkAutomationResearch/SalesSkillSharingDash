@@ -92,7 +92,7 @@ export function AnalyticsDashboard() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-3xl font-bold tracking-tight">Analytics Dashboard</h2>
+        <h2 className="text-3xl font-bold tracking-tight">Superpower Attainment Framework - Analytics</h2>
         <p className="text-muted-foreground">
           Performance metrics and insights for skills development
         </p>
@@ -163,16 +163,17 @@ export function AnalyticsDashboard() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={skillDistribution}>
+            <ResponsiveContainer width="100%" height={350}>
+              <BarChart data={skillDistribution} margin={{ top: 20, right: 30, left: 20, bottom: 80 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke={THEME_COLORS.lightMuted} />
                 <XAxis 
                   dataKey="name" 
                   angle={-45}
                   textAnchor="end"
                   height={80}
-                  fontSize={12}
+                  fontSize={10}
                   stroke={THEME_COLORS.charcoalGray}
+                  interval={0}
                 />
                 <YAxis stroke={THEME_COLORS.charcoalGray} />
                 <Tooltip 
@@ -181,7 +182,12 @@ export function AnalyticsDashboard() {
                     border: `1px solid ${THEME_COLORS.lightMuted}`,
                     borderRadius: '8px',
                     color: THEME_COLORS.charcoalGray
-                  }} 
+                  }}
+                  formatter={(value: number, name: string) => [
+                    `${value} / 5`,
+                    name === 'average' ? 'Current Level' : 'Required Level'
+                  ]}
+                  labelFormatter={(label: string) => `Skill: ${label}`}
                 />
                 <Bar dataKey="average" fill={THEME_COLORS.emeraldGreen} name="Current Level" />
                 <Bar dataKey="required" fill={THEME_COLORS.goldenYellow} name="Required Level" />
@@ -202,9 +208,9 @@ export function AnalyticsDashboard() {
               <PieChart>
                 <Pie
                   data={[
-                    { name: 'Urgent (3+ levels)', value: urgentGaps.length },
-                    { name: 'Moderate (2 levels)', value: moderateGaps.length },
-                    { name: 'Minor (1 level)', value: minorGaps.length }
+                    { name: 'Urgent (3+ levels)', value: urgentGaps.length, skills: urgentGaps.map(g => g.skill.name).slice(0, 3).join(', ') },
+                    { name: 'Moderate (2 levels)', value: moderateGaps.length, skills: moderateGaps.map(g => g.skill.name).slice(0, 3).join(', ') },
+                    { name: 'Minor (1 level)', value: minorGaps.length, skills: minorGaps.map(g => g.skill.name).slice(0, 3).join(', ') }
                   ]}
                   cx="50%"
                   cy="50%"
@@ -224,7 +230,11 @@ export function AnalyticsDashboard() {
                     border: `1px solid ${THEME_COLORS.lightMuted}`,
                     borderRadius: '8px',
                     color: THEME_COLORS.charcoalGray
-                  }} 
+                  }}
+                  formatter={(value: number, name: string) => [
+                    `${value} gaps`,
+                    name
+                  ]}
                 />
               </PieChart>
             </ResponsiveContainer>
