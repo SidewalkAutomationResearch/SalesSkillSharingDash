@@ -3,7 +3,7 @@
 import { useDashboardStore } from '@/store/dashboard-store';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Progress } from '@radix-ui/react-progress';
+import * as Progress from '@radix-ui/react-progress';
 import { 
   Play, 
   Clock, 
