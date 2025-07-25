@@ -57,15 +57,6 @@ export default {
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         
-        // Professional Enterprise Color Utilities
-        "professional-blue": "#2563eb",
-        "professional-red": "#dc2626", 
-        "professional-green": "#22c55e",
-        "professional-amber": "#f59e0b",
-        "navy-background": "#0f172a",
-        "slate-card": "#1e293b",
-        "slate-border": "#475569",
-        "slate-muted": "#94a3b8",
       },
       borderRadius: {
         lg: "var(--radius)",

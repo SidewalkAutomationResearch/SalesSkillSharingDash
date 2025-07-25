@@ -48,7 +48,7 @@ export function Navigation() {
             return (
               <Button
                 key={item.id}
-                variant={activeView === item.id ? "deep-green" : "ghost"}
+                variant={activeView === item.id ? "default" : "ghost"}
                 size="sm"
                 onClick={() => setActiveView(item.id)}
                 className="relative"

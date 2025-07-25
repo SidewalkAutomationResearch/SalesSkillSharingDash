@@ -5,20 +5,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { TrendingUp, Users, Award, AlertTriangle } from 'lucide-react';
 
-// Professional Enterprise Theme Colors
-const THEME_COLORS = {
-  professionalBlue: '#2563eb',
-  professionalRed: '#dc2626', 
-  professionalGreen: '#22c55e',
-  professionalAmber: '#f59e0b',
-  navyBackground: '#0f172a',
-  slateCard: '#1e293b',
-  slateBorder: '#475569',
-  slateMuted: '#94a3b8',
-  cleanWhite: '#f8fafc'
-};
-
-const CHART_COLORS = [THEME_COLORS.professionalBlue, THEME_COLORS.professionalGreen, THEME_COLORS.professionalRed, THEME_COLORS.professionalAmber, THEME_COLORS.slateMuted];
+// Default Chart Colors
+const CHART_COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
 
 export function AnalyticsDashboard() {
   const { 
@@ -167,23 +155,23 @@ export function AnalyticsDashboard() {
           <CardContent>
             <ResponsiveContainer width="100%" height={350}>
               <BarChart data={skillDistribution} margin={{ top: 20, right: 30, left: 20, bottom: 80 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke={THEME_COLORS.slateBorder} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                 <XAxis 
                   dataKey="name" 
                   angle={-45}
                   textAnchor="end"
                   height={80}
                   fontSize={10}
-                  stroke={THEME_COLORS.cleanWhite}
+                  stroke="#374151"
                   interval={0}
                 />
-                <YAxis stroke={THEME_COLORS.cleanWhite} />
+                <YAxis stroke="#374151" />
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: THEME_COLORS.slateCard, 
-                    border: `1px solid ${THEME_COLORS.slateBorder}`,
+                    backgroundColor: 'white', 
+                    border: '1px solid #e5e7eb',
                     borderRadius: '8px',
-                    color: THEME_COLORS.cleanWhite
+                    color: '#374151'
                   }}
                   formatter={(value: number, name: string) => [
                     `${value} / 5`,
@@ -191,8 +179,8 @@ export function AnalyticsDashboard() {
                   ]}
                   labelFormatter={(label: string) => `Skill: ${label}`}
                 />
-                <Bar dataKey="average" fill={THEME_COLORS.professionalBlue} name="Current Level" />
-                <Bar dataKey="required" fill={THEME_COLORS.professionalGreen} name="Required Level" />
+                <Bar dataKey="average" fill="#3b82f6" name="Current Level" />
+                <Bar dataKey="required" fill="#10b981" name="Required Level" />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
@@ -219,7 +207,7 @@ export function AnalyticsDashboard() {
                   labelLine={false}
                   label={({ name, percent }) => `${name} ${percent ? (percent * 100).toFixed(0) : '0'}%`}
                   outerRadius={80}
-                  fill={THEME_COLORS.professionalBlue}
+                  fill="#3b82f6"
                   dataKey="value"
                 >
                   {[0, 1, 2].map((entry, index) => (
@@ -228,10 +216,10 @@ export function AnalyticsDashboard() {
                 </Pie>
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: THEME_COLORS.slateCard, 
-                    border: `1px solid ${THEME_COLORS.slateBorder}`,
+                    backgroundColor: 'white', 
+                    border: '1px solid #e5e7eb',
                     borderRadius: '8px',
-                    color: THEME_COLORS.cleanWhite
+                    color: '#374151'
                   }}
                   formatter={(value: number, name: string) => [
                     `${value} gaps`,
@@ -256,18 +244,18 @@ export function AnalyticsDashboard() {
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={categoryPerformance} layout="horizontal">
-                <CartesianGrid strokeDasharray="3 3" stroke={THEME_COLORS.slateBorder} />
-                <XAxis type="number" stroke={THEME_COLORS.cleanWhite} />
-                <YAxis dataKey="name" type="category" width={100} stroke={THEME_COLORS.cleanWhite} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                <XAxis type="number" stroke="#374151" />
+                <YAxis dataKey="name" type="category" width={100} stroke="#374151" />
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: THEME_COLORS.slateCard, 
-                    border: `1px solid ${THEME_COLORS.slateBorder}`,
+                    backgroundColor: 'white', 
+                    border: '1px solid #e5e7eb',
                     borderRadius: '8px',
-                    color: THEME_COLORS.cleanWhite
+                    color: '#374151'
                   }} 
                 />
-                <Bar dataKey="gap" fill={THEME_COLORS.professionalRed} name="Average Gap" />
+                <Bar dataKey="gap" fill="#ef4444" name="Average Gap" />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
@@ -283,25 +271,25 @@ export function AnalyticsDashboard() {
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={trainingData}>
-                <CartesianGrid strokeDasharray="3 3" stroke={THEME_COLORS.slateBorder} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                 <XAxis 
                   dataKey="name" 
                   angle={-45}
                   textAnchor="end"
                   height={80}
                   fontSize={12}
-                  stroke={THEME_COLORS.cleanWhite}
+                  stroke="#374151"
                 />
-                <YAxis stroke={THEME_COLORS.cleanWhite} />
+                <YAxis stroke="#374151" />
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: THEME_COLORS.slateCard, 
-                    border: `1px solid ${THEME_COLORS.slateBorder}`,
+                    backgroundColor: 'white', 
+                    border: '1px solid #e5e7eb',
                     borderRadius: '8px',
-                    color: THEME_COLORS.cleanWhite
+                    color: '#374151'
                   }} 
                 />
-                <Bar dataKey="completion" fill={THEME_COLORS.professionalGreen} name="Completion %" />
+                <Bar dataKey="completion" fill="#10b981" name="Completion %" />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
