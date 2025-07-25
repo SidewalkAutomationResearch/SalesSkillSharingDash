@@ -31,8 +31,10 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <main className="container mx-auto px-4 py-8">
-        {renderActiveView()}
+      <main className="container mx-auto px-4 py-8 bg-background">
+        <div className="space-y-6">
+          {renderActiveView()}
+        </div>
       </main>
     </div>
   );

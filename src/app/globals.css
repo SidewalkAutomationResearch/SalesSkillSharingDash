@@ -2,48 +2,62 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 84% 4.9%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 84% 4.9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
+    /* Sales Dashboard Theme - Gray, Green, Yellow */
+    --background: 246 247 250; /* #F6F7FA - Light Gray */
+    --foreground: 35 39 47; /* #23272F - Charcoal Gray */
+    --card: 217 221 227; /* #D9DDE3 - Medium Gray */
+    --card-foreground: 35 39 47; /* #23272F - Charcoal Gray */
+    --popover: 217 221 227; /* #D9DDE3 - Medium Gray */
+    --popover-foreground: 35 39 47; /* #23272F - Charcoal Gray */
+    --primary: 46 204 64; /* #2ECC40 - Emerald Green */
+    --primary-foreground: 35 39 47; /* #23272F - Charcoal Gray */
+    --secondary: 196 199 206; /* #C4C7CE - Light Muted */
+    --secondary-foreground: 35 39 47; /* #23272F - Charcoal Gray */
+    --muted: 217 221 227; /* #D9DDE3 - Medium Gray */
+    --muted-foreground: 35 39 47; /* #23272F - Charcoal Gray */
+    --accent: 255 201 60; /* #FFC93C - Golden Yellow */
+    --accent-foreground: 35 39 47; /* #23272F - Charcoal Gray */
+    --success: 46 204 64; /* #2ECC40 - Emerald Green */
+    --success-foreground: 35 39 47; /* #23272F - Charcoal Gray */
+    --warning: 255 201 60; /* #FFC93C - Golden Yellow */
+    --warning-foreground: 35 39 47; /* #23272F - Charcoal Gray */
+    --deep-green: 9 121 105; /* #097969 - Deep Green */
+    --deep-green-foreground: 246 247 250; /* #F6F7FA - Light Gray */
+    --destructive: 239 68 68; /* Red for errors */
+    --destructive-foreground: 246 247 250; /* #F6F7FA - Light Gray */
+    --border: 196 199 206; /* #C4C7CE - Light Muted */
+    --input: 217 221 227; /* #D9DDE3 - Medium Gray */
+    --ring: 46 204 64; /* #2ECC40 - Emerald Green */
     --radius: 0.75rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 84% 4.9%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 94.1%;
+    /* Dark mode maintaining the same relationships */
+    --background: 35 39 47; /* #23272F - Charcoal Gray */
+    --foreground: 246 247 250; /* #F6F7FA - Light Gray */
+    --card: 40 44 52; /* Slightly lighter than background */
+    --card-foreground: 246 247 250; /* #F6F7FA - Light Gray */
+    --popover: 40 44 52;
+    --popover-foreground: 246 247 250;
+    --primary: 46 204 64; /* #2ECC40 - Emerald Green */
+    --primary-foreground: 35 39 47; /* #23272F - Charcoal Gray */
+    --secondary: 50 54 62;
+    --secondary-foreground: 246 247 250;
+    --muted: 50 54 62;
+    --muted-foreground: 196 199 206;
+    --accent: 255 201 60; /* #FFC93C - Golden Yellow */
+    --accent-foreground: 35 39 47; /* #23272F - Charcoal Gray */
+    --success: 46 204 64;
+    --success-foreground: 35 39 47;
+    --warning: 255 201 60;
+    --warning-foreground: 35 39 47;
+    --deep-green: 9 121 105;
+    --deep-green-foreground: 246 247 250;
+    --destructive: 239 68 68;
+    --destructive-foreground: 246 247 250;
+    --border: 60 64 72;
+    --input: 50 54 62;
+    --ring: 46 204 64;
   }
 }
 
@@ -56,5 +70,21 @@
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
     font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  /* Enhanced accessibility and readability */
+  h1, h2, h3, h4, h5, h6 {
+    color: hsl(var(--foreground));
+    font-weight: 600;
+  }
+
+  /* Zebra striping for tables */
+  .table-row-even {
+    background-color: hsl(var(--background));
+  }
+  
+  .table-row-odd {
+    background-color: hsl(var(--card) / 0.3);
   }
 }

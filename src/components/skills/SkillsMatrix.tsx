@@ -7,10 +7,10 @@ import * as Progress from '@radix-ui/react-progress';
 
 const SkillLevelIndicator = ({ level, targetLevel }: { level: number; targetLevel: number }) => {
   const getColor = (currentLevel: number) => {
-    if (currentLevel >= 4) return 'bg-green-500';
-    if (currentLevel >= 3) return 'bg-yellow-500';
-    if (currentLevel >= 2) return 'bg-orange-500';
-    return 'bg-red-500';
+    if (currentLevel >= 4) return 'bg-success'; // Emerald Green for high skill
+    if (currentLevel >= 3) return 'bg-warning'; // Golden Yellow for medium skill
+    if (currentLevel >= 2) return 'bg-warning/70'; // Lighter yellow for developing skill
+    return 'bg-destructive'; // Red for low skill
   };
 
   return (
@@ -19,8 +19,8 @@ const SkillLevelIndicator = ({ level, targetLevel }: { level: number; targetLeve
         {[1, 2, 3, 4, 5].map((i) => (
           <div
             key={i}
-            className={`w-3 h-3 rounded-full border ${
-              i <= level ? getColor(level) : 'bg-gray-200'
+            className={`w-3 h-3 rounded-full border border-border ${
+              i <= level ? getColor(level) : 'bg-secondary'
             }`}
           />
         ))}
@@ -69,7 +69,7 @@ export function SkillsMatrix() {
         </div>
         <div className="flex gap-2">
           <Button variant="outline">Export CSV</Button>
-          <Button>Add Assessment</Button>
+          <Button variant="deep-green">Add Assessment</Button>
         </div>
       </div>
 
@@ -103,10 +103,12 @@ export function SkillsMatrix() {
                 </tr>
               </thead>
               <tbody>
-                {employees.map((employee) => (
+                {employees.map((employee, index) => (
                   <tr
                     key={employee.id}
-                    className="border-b hover:bg-muted/50 cursor-pointer"
+                    className={`border-b border-border hover:bg-muted/50 cursor-pointer transition-colors ${
+                      index % 2 === 0 ? 'bg-background' : 'bg-card/30'
+                    }`}
                     onClick={() => setSelectedEmployee(employee)}
                   >
                     <td className="p-4">

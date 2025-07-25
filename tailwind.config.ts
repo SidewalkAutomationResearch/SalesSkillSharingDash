@@ -10,6 +10,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Sales Dashboard Theme - Gray, Green, Yellow
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -21,20 +22,32 @@ export default {
           foreground: "hsl(var(--popover-foreground))",
         },
         primary: {
-          DEFAULT: "hsl(var(--primary))",
+          DEFAULT: "hsl(var(--primary))", // Emerald Green
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
+          DEFAULT: "hsl(var(--secondary))", // Light Muted
           foreground: "hsl(var(--secondary-foreground))",
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
+          DEFAULT: "hsl(var(--muted))", // Medium Gray
           foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
+          DEFAULT: "hsl(var(--accent))", // Golden Yellow
           foreground: "hsl(var(--accent-foreground))",
+        },
+        success: {
+          DEFAULT: "hsl(var(--success))", // Emerald Green
+          foreground: "hsl(var(--success-foreground))",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning))", // Golden Yellow
+          foreground: "hsl(var(--warning-foreground))",
+        },
+        "deep-green": {
+          DEFAULT: "hsl(var(--deep-green))", // Deep Green for buttons
+          foreground: "hsl(var(--deep-green-foreground))",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -43,6 +56,15 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
+        
+        // Direct color utilities for chart colors
+        "emerald-green": "#2ECC40",
+        "golden-yellow": "#FFC93C",
+        "deep-green-direct": "#097969",
+        "charcoal-gray": "#23272F",
+        "light-gray": "#F6F7FA",
+        "medium-gray": "#D9DDE3",
+        "light-muted": "#C4C7CE",
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -49,10 +49,10 @@ export function Navigation() {
   const { activeView, setActiveView } = useDashboardStore();
 
   return (
-    <div className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <div className="border-b border-border bg-background shadow-sm">
       <div className="container flex h-16 items-center px-4">
         <div className="mr-8">
-          <h1 className="text-xl font-bold">Sales Engineering Skills Dashboard</h1>
+          <h1 className="text-xl font-bold text-foreground">Sales Engineering Skills Dashboard</h1>
         </div>
         
         <nav className="flex items-center space-x-2 lg:space-x-4">
@@ -61,7 +61,7 @@ export function Navigation() {
             return (
               <Button
                 key={item.id}
-                variant={activeView === item.id ? "default" : "ghost"}
+                variant={activeView === item.id ? "deep-green" : "ghost"}
                 size="sm"
                 onClick={() => setActiveView(item.id)}
                 className="relative"

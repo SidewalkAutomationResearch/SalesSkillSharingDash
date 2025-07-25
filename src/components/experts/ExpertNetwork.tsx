@@ -10,9 +10,9 @@ import { SkillCategory } from '@/types/skills';
 
 const AvailabilityBadge = ({ availability }: { availability: string }) => {
   const config = {
-    available: { color: 'bg-green-100 text-green-800', text: 'Available' },
-    busy: { color: 'bg-yellow-100 text-yellow-800', text: 'Busy' },
-    offline: { color: 'bg-gray-100 text-gray-800', text: 'Offline' }
+    available: { color: 'bg-success/10 text-success border border-success/20', text: 'Available' },
+    busy: { color: 'bg-warning/10 text-warning border border-warning/20', text: 'Busy' },
+    offline: { color: 'bg-secondary text-foreground border border-border', text: 'Offline' }
   };
   
   const { color, text } = config[availability as keyof typeof config] || config.offline;
@@ -73,7 +73,7 @@ export function ExpertNetwork() {
             Find and connect with subject matter experts across the organization
           </p>
         </div>
-        <Button>
+        <Button variant="deep-green">
           <MessageCircle className="w-4 h-4 mr-2" />
           Start Group Chat
         </Button>

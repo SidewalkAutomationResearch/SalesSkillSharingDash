@@ -28,10 +28,10 @@ export function TrainingDashboard() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'active': return 'bg-green-100 text-green-800';
-      case 'planned': return 'bg-blue-100 text-blue-800';
-      case 'completed': return 'bg-gray-100 text-gray-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'active': return 'bg-success/10 text-success border border-success/20';
+      case 'planned': return 'bg-warning/10 text-warning border border-warning/20';
+      case 'completed': return 'bg-secondary text-foreground border border-border';
+      default: return 'bg-secondary text-foreground border border-border';
     }
   };
 
@@ -58,7 +58,7 @@ export function TrainingDashboard() {
             <Calendar className="w-4 h-4 mr-2" />
             Schedule Training
           </Button>
-          <Button>
+          <Button variant="deep-green">
             <Plus className="w-4 h-4 mr-2" />
             Create Program
           </Button>
@@ -91,7 +91,7 @@ export function TrainingDashboard() {
                 </div>
                 <Progress.Root className="relative overflow-hidden bg-secondary rounded-full w-full h-2">
                   <Progress.Indicator
-                    className="bg-primary h-full w-full transition-transform duration-[660ms] ease-[cubic-bezier(0.65, 0, 0.35, 1)]"
+                    className="bg-success h-full w-full transition-transform duration-[660ms] ease-[cubic-bezier(0.65, 0, 0.35, 1)]"
                     style={{ transform: `translateX(-${100 - program.completionRate}%)` }}
                   />
                 </Progress.Root>

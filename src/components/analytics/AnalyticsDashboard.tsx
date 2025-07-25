@@ -5,7 +5,18 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { TrendingUp, Users, Award, AlertTriangle } from 'lucide-react';
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'];
+// Sales Dashboard Theme Colors
+const THEME_COLORS = {
+  emeraldGreen: '#2ECC40',
+  goldenYellow: '#FFC93C', 
+  deepGreen: '#097969',
+  charcoalGray: '#23272F',
+  lightGray: '#F6F7FA',
+  mediumGray: '#D9DDE3',
+  lightMuted: '#C4C7CE'
+};
+
+const CHART_COLORS = [THEME_COLORS.emeraldGreen, THEME_COLORS.goldenYellow, THEME_COLORS.deepGreen, THEME_COLORS.lightMuted, THEME_COLORS.charcoalGray];
 
 export function AnalyticsDashboard() {
   const { 
@@ -89,53 +100,53 @@ export function AnalyticsDashboard() {
 
       {/* Key Metrics */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card>
+        <Card className="bg-card border-border">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Team Members</CardTitle>
-            <Users className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-medium text-foreground">Total Team Members</CardTitle>
+            <Users className="h-4 w-4 text-primary" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{metrics.totalEmployees}</div>
-            <p className="text-xs text-muted-foreground">
+            <div className="text-2xl font-bold text-foreground">{metrics.totalEmployees}</div>
+            <p className="text-xs text-success font-medium">
               +12% from last month
             </p>
           </CardContent>
         </Card>
         
-        <Card>
+        <Card className="bg-card border-border">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Avg Skill Level</CardTitle>
-            <TrendingUp className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-medium text-foreground">Avg Skill Level</CardTitle>
+            <TrendingUp className="h-4 w-4 text-success" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{metrics.averageSkillLevel}</div>
-            <p className="text-xs text-muted-foreground">
+            <div className="text-2xl font-bold text-success">{metrics.averageSkillLevel}</div>
+            <p className="text-xs text-success font-medium">
               +0.3 from last month
             </p>
           </CardContent>
         </Card>
         
-        <Card>
+        <Card className="bg-card border-border">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Skills Gaps</CardTitle>
-            <AlertTriangle className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-medium text-foreground">Skills Gaps</CardTitle>
+            <AlertTriangle className="h-4 w-4 text-warning" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{metrics.skillsGapCount}</div>
-            <p className="text-xs text-muted-foreground">
+            <div className="text-2xl font-bold text-warning">{metrics.skillsGapCount}</div>
+            <p className="text-xs text-success font-medium">
               -2 from last month
             </p>
           </CardContent>
         </Card>
         
-        <Card>
+        <Card className="bg-card border-border">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Training Completion</CardTitle>
-            <Award className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-medium text-foreground">Training Completion</CardTitle>
+            <Award className="h-4 w-4 text-success" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{metrics.trainingCompletionRate}%</div>
-            <p className="text-xs text-muted-foreground">
+            <div className="text-2xl font-bold text-success">{metrics.trainingCompletionRate}%</div>
+            <p className="text-xs text-success font-medium">
               +5% from last month
             </p>
           </CardContent>
@@ -154,18 +165,26 @@ export function AnalyticsDashboard() {
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={skillDistribution}>
-                <CartesianGrid strokeDasharray="3 3" />
+                <CartesianGrid strokeDasharray="3 3" stroke={THEME_COLORS.lightMuted} />
                 <XAxis 
                   dataKey="name" 
                   angle={-45}
                   textAnchor="end"
                   height={80}
                   fontSize={12}
+                  stroke={THEME_COLORS.charcoalGray}
                 />
-                <YAxis />
-                <Tooltip />
-                <Bar dataKey="average" fill="#8884d8" name="Current Level" />
-                <Bar dataKey="required" fill="#82ca9d" name="Required Level" />
+                <YAxis stroke={THEME_COLORS.charcoalGray} />
+                <Tooltip 
+                  contentStyle={{ 
+                    backgroundColor: THEME_COLORS.mediumGray, 
+                    border: `1px solid ${THEME_COLORS.lightMuted}`,
+                    borderRadius: '8px',
+                    color: THEME_COLORS.charcoalGray
+                  }} 
+                />
+                <Bar dataKey="average" fill={THEME_COLORS.emeraldGreen} name="Current Level" />
+                <Bar dataKey="required" fill={THEME_COLORS.goldenYellow} name="Required Level" />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
@@ -183,23 +202,30 @@ export function AnalyticsDashboard() {
               <PieChart>
                 <Pie
                   data={[
-                    { name: 'Urgent (3+ levels)', value: urgentGaps.length, color: '#FF8042' },
-                    { name: 'Moderate (2 levels)', value: moderateGaps.length, color: '#FFBB28' },
-                    { name: 'Minor (1 level)', value: minorGaps.length, color: '#00C49F' }
+                    { name: 'Urgent (3+ levels)', value: urgentGaps.length },
+                    { name: 'Moderate (2 levels)', value: moderateGaps.length },
+                    { name: 'Minor (1 level)', value: minorGaps.length }
                   ]}
                   cx="50%"
                   cy="50%"
                   labelLine={false}
                   label={({ name, percent }) => `${name} ${percent ? (percent * 100).toFixed(0) : '0'}%`}
                   outerRadius={80}
-                  fill="#8884d8"
+                  fill={THEME_COLORS.emeraldGreen}
                   dataKey="value"
                 >
                   {[0, 1, 2].map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    <Cell key={`cell-${index}`} fill={CHART_COLORS[index % CHART_COLORS.length]} />
                   ))}
                 </Pie>
-                <Tooltip />
+                <Tooltip 
+                  contentStyle={{ 
+                    backgroundColor: THEME_COLORS.mediumGray, 
+                    border: `1px solid ${THEME_COLORS.lightMuted}`,
+                    borderRadius: '8px',
+                    color: THEME_COLORS.charcoalGray
+                  }} 
+                />
               </PieChart>
             </ResponsiveContainer>
           </CardContent>
@@ -218,11 +244,18 @@ export function AnalyticsDashboard() {
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={categoryPerformance} layout="horizontal">
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis type="number" />
-                <YAxis dataKey="name" type="category" width={100} />
-                <Tooltip />
-                <Bar dataKey="gap" fill="#ff7c7c" name="Average Gap" />
+                <CartesianGrid strokeDasharray="3 3" stroke={THEME_COLORS.lightMuted} />
+                <XAxis type="number" stroke={THEME_COLORS.charcoalGray} />
+                <YAxis dataKey="name" type="category" width={100} stroke={THEME_COLORS.charcoalGray} />
+                <Tooltip 
+                  contentStyle={{ 
+                    backgroundColor: THEME_COLORS.mediumGray, 
+                    border: `1px solid ${THEME_COLORS.lightMuted}`,
+                    borderRadius: '8px',
+                    color: THEME_COLORS.charcoalGray
+                  }} 
+                />
+                <Bar dataKey="gap" fill={THEME_COLORS.goldenYellow} name="Average Gap" />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
@@ -238,17 +271,25 @@ export function AnalyticsDashboard() {
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={trainingData}>
-                <CartesianGrid strokeDasharray="3 3" />
+                <CartesianGrid strokeDasharray="3 3" stroke={THEME_COLORS.lightMuted} />
                 <XAxis 
                   dataKey="name" 
                   angle={-45}
                   textAnchor="end"
                   height={80}
                   fontSize={12}
+                  stroke={THEME_COLORS.charcoalGray}
                 />
-                <YAxis />
-                <Tooltip />
-                <Bar dataKey="completion" fill="#82ca9d" name="Completion %" />
+                <YAxis stroke={THEME_COLORS.charcoalGray} />
+                <Tooltip 
+                  contentStyle={{ 
+                    backgroundColor: THEME_COLORS.mediumGray, 
+                    border: `1px solid ${THEME_COLORS.lightMuted}`,
+                    borderRadius: '8px',
+                    color: THEME_COLORS.charcoalGray
+                  }} 
+                />
+                <Bar dataKey="completion" fill={THEME_COLORS.emeraldGreen} name="Completion %" />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
