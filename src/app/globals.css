@@ -2,62 +2,31 @@
 
 @layer base {
   :root {
-    /* Sales Dashboard Theme - Gray, Green, Yellow */
-    --background: 246 247 250; /* #F6F7FA - Light Gray */
-    --foreground: 35 39 47; /* #23272F - Charcoal Gray */
-    --card: 217 221 227; /* #D9DDE3 - Medium Gray */
-    --card-foreground: 35 39 47; /* #23272F - Charcoal Gray */
-    --popover: 217 221 227; /* #D9DDE3 - Medium Gray */
-    --popover-foreground: 35 39 47; /* #23272F - Charcoal Gray */
-    --primary: 46 204 64; /* #2ECC40 - Emerald Green */
-    --primary-foreground: 35 39 47; /* #23272F - Charcoal Gray */
-    --secondary: 196 199 206; /* #C4C7CE - Light Muted */
-    --secondary-foreground: 35 39 47; /* #23272F - Charcoal Gray */
-    --muted: 217 221 227; /* #D9DDE3 - Medium Gray */
-    --muted-foreground: 35 39 47; /* #23272F - Charcoal Gray */
-    --accent: 255 201 60; /* #FFC93C - Golden Yellow */
-    --accent-foreground: 35 39 47; /* #23272F - Charcoal Gray */
-    --success: 46 204 64; /* #2ECC40 - Emerald Green */
-    --success-foreground: 35 39 47; /* #23272F - Charcoal Gray */
-    --warning: 255 201 60; /* #FFC93C - Golden Yellow */
-    --warning-foreground: 35 39 47; /* #23272F - Charcoal Gray */
-    --deep-green: 9 121 105; /* #097969 - Deep Green */
-    --deep-green-foreground: 246 247 250; /* #F6F7FA - Light Gray */
-    --destructive: 239 68 68; /* Red for errors */
-    --destructive-foreground: 246 247 250; /* #F6F7FA - Light Gray */
-    --border: 196 199 206; /* #C4C7CE - Light Muted */
-    --input: 217 221 227; /* #D9DDE3 - Medium Gray */
-    --ring: 46 204 64; /* #2ECC40 - Emerald Green */
+    /* Professional Dark Mode Theme - Enterprise Ready */
+    --background: 15 23 42; /* #0f172a - Deep Navy Background */
+    --foreground: 248 250 252; /* #f8fafc - Clean White Text */
+    --card: 30 41 59; /* #1e293b - Elevated Slate Blue */
+    --card-foreground: 248 250 252; /* #f8fafc - Clean White Text */
+    --popover: 30 41 59; /* #1e293b - Elevated Slate Blue */
+    --popover-foreground: 248 250 252; /* #f8fafc - Clean White Text */
+    --primary: 37 99 235; /* #2563eb - Professional Blue */
+    --primary-foreground: 248 250 252; /* #f8fafc - White Text on Blue */
+    --secondary: 51 65 85; /* #334155 - Balanced Gray */
+    --secondary-foreground: 226 232 240; /* #e2e8f0 - Light Gray */
+    --muted: 51 65 85; /* #334155 - Balanced Gray */
+    --muted-foreground: 148 163 184; /* #94a3b8 - Professional Muted */
+    --accent: 220 38 127; /* #dc2626 - Professional Red */
+    --accent-foreground: 248 250 252; /* #f8fafc - White Text on Red */
+    --success: 34 197 94; /* #22c55e - Professional Green */
+    --success-foreground: 248 250 252; /* #f8fafc - White Text on Green */
+    --warning: 245 158 11; /* #f59e0b - Professional Amber */
+    --warning-foreground: 15 23 42; /* #0f172a - Dark Text on Amber */
+    --destructive: 220 38 38; /* #dc2626 - Professional Red */
+    --destructive-foreground: 248 250 252; /* #f8fafc - White Text on Red */
+    --border: 71 85 105; /* #475569 - Professional Border */
+    --input: 51 65 85; /* #334155 - Input Background */
+    --ring: 37 99 235; /* #2563eb - Professional Blue Focus */
     --radius: 0.75rem;
-  }
-
-  .dark {
-    /* Dark mode maintaining the same relationships */
-    --background: 35 39 47; /* #23272F - Charcoal Gray */
-    --foreground: 246 247 250; /* #F6F7FA - Light Gray */
-    --card: 40 44 52; /* Slightly lighter than background */
-    --card-foreground: 246 247 250; /* #F6F7FA - Light Gray */
-    --popover: 40 44 52;
-    --popover-foreground: 246 247 250;
-    --primary: 46 204 64; /* #2ECC40 - Emerald Green */
-    --primary-foreground: 35 39 47; /* #23272F - Charcoal Gray */
-    --secondary: 50 54 62;
-    --secondary-foreground: 246 247 250;
-    --muted: 50 54 62;
-    --muted-foreground: 196 199 206;
-    --accent: 255 201 60; /* #FFC93C - Golden Yellow */
-    --accent-foreground: 35 39 47; /* #23272F - Charcoal Gray */
-    --success: 46 204 64;
-    --success-foreground: 35 39 47;
-    --warning: 255 201 60;
-    --warning-foreground: 35 39 47;
-    --deep-green: 9 121 105;
-    --deep-green-foreground: 246 247 250;
-    --destructive: 239 68 68;
-    --destructive-foreground: 246 247 250;
-    --border: 60 64 72;
-    --input: 50 54 62;
-    --ring: 46 204 64;
   }
 }
 

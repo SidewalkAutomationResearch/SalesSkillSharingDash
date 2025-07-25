@@ -1,0 +1,15 @@
+
+> sales-skills-dashboard@0.1.0 dev
+> next dev --turbopack
+
+ ⚠ Warning: Found multiple lockfiles. Selecting /Users/willeddy/package-lock.json.
+   Consider removing the lockfiles at:
+   * /Users/willeddy/Claude/Skill Sharing Dashboard/sales-skills-dashboard/sales-skills-dashboard/package-lock.json
+
+   ▲ Next.js 15.4.4 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.0.22:3000
+
+ ✓ Starting...
+ ✓ Ready in 915ms
+[?25h

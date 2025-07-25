@@ -57,14 +57,15 @@ export default {
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         
-        // Direct color utilities for chart colors
-        "emerald-green": "#2ECC40",
-        "golden-yellow": "#FFC93C",
-        "deep-green-direct": "#097969",
-        "charcoal-gray": "#23272F",
-        "light-gray": "#F6F7FA",
-        "medium-gray": "#D9DDE3",
-        "light-muted": "#C4C7CE",
+        // Professional Enterprise Color Utilities
+        "professional-blue": "#2563eb",
+        "professional-red": "#dc2626", 
+        "professional-green": "#22c55e",
+        "professional-amber": "#f59e0b",
+        "navy-background": "#0f172a",
+        "slate-card": "#1e293b",
+        "slate-border": "#475569",
+        "slate-muted": "#94a3b8",
       },
       borderRadius: {
         lg: "var(--radius)",
