@@ -176,8 +176,8 @@ export function SkillsHeatmap() {
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center gap-4">
             <span className="font-medium">
-              <strong>Superpower Attainment Framework</strong> - Next.js 14 + TypeScript + Zustand + Radix UI + Recharts dashboard built for sales engineering excellence. 
-              Made in <3 hours while the kids fell asleep.
+              <strong>Superpower Attainment Framework</strong> - Next.js 14 + TypeScript + Zustand + Radix UI + Recharts dashboard built for sales engineering excellence.
+              Made in &lt;3 hours while the kids fell asleep.
             </span>
             <div className="flex items-center gap-3">
               <a 
