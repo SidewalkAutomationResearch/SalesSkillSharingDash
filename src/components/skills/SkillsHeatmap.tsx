@@ -55,7 +55,6 @@ export function SkillsHeatmap() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-3xl font-bold tracking-tight">Superpower Attainment Framework - Skills Heatmap</h2>
           <p className="text-muted-foreground">
             Interactive skills matrix with gap analysis visualization
           </p>

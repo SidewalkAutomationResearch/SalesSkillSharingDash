@@ -5,8 +5,7 @@ import { Button } from '@/components/ui/button';
 import { 
   Grid3X3, 
   Users, 
-  BarChart3, 
-  Search
+  BarChart3
 } from 'lucide-react';
 
 const navigationItems = [
@@ -33,11 +32,18 @@ const navigationItems = [
 export function Navigation() {
   const { activeView, setActiveView } = useDashboardStore();
 
+  const getCurrentPageTitle = () => {
+    const currentItem = navigationItems.find(item => item.id === activeView);
+    return currentItem ? currentItem.label : 'Skills Matrix';
+  };
+
   return (
     <div className="border-b border-border bg-background shadow-sm">
-      <div className="container flex h-16 items-center px-4">
+      <div className="container flex h-16 items-center px-4" style={{ paddingLeft: '125px' }}>
         <div className="mr-8">
-          <h1 className="text-xl font-bold text-foreground">Superpower Attainment Framework</h1>
+          <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 via-red-500 to-yellow-500 bg-clip-text text-transparent">
+            Superpower Attainment Framework
+          </h1>
           <p className="text-xs text-muted-foreground">Sales Engineering Skills Dashboard</p>
         </div>
         
@@ -59,15 +65,10 @@ export function Navigation() {
           })}
         </nav>
 
-        <div className="ml-auto flex items-center" style={{ marginRight: '120px' }}>
-          <div className="relative">
-            <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-accent-blue" />
-            <input
-              type="text"
-              placeholder="Search..."
-              className="w-64 pl-10 pr-4 py-2 text-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent-blue bg-input text-foreground placeholder:text-muted-foreground"
-            />
-          </div>
+        <div className="ml-auto flex items-center">
+          <h2 className="text-lg font-semibold text-foreground">
+            {getCurrentPageTitle()}
+          </h2>
         </div>
       </div>
     </div>
