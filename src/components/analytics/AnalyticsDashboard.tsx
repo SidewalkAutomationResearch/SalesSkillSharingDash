@@ -61,8 +61,8 @@ export function AnalyticsDashboard() {
     
     return acc;
   }, {})).map((cat) => ({
-    name: cat.category.replace('_', ' ').replace(/\b\w/g, (l: string) => l.toUpperCase()),
-    gap: Number(cat.totalGap.toFixed(1)),
+    name: cat.category.replace(/_/g, ' ').replace(/\b\w/g, (l: string) => l.toUpperCase()),
+    gap: Math.max(0.1, Number((cat.totalGap / cat.skills.length).toFixed(1))), // Average gap per skill, minimum 0.1 for visibility
     coverage: Math.round((cat.assessmentCount / (cat.skills.length * employees.length)) * 100)
   }));
 
@@ -269,7 +269,7 @@ export function AnalyticsDashboard() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={400}>
               <BarChart data={trainingData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
                 <XAxis 
