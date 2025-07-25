@@ -5,8 +5,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { TrendingUp, Users, Award, AlertTriangle } from 'lucide-react';
 
-// Default Chart Colors
-const CHART_COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
+// GitHub-inspired Chart Colors
+const CHART_COLORS = ['#58a6ff', '#238636', '#fb8500', '#f85149', '#8b5cf6'];
 
 export function AnalyticsDashboard() {
   const { 
@@ -155,23 +155,23 @@ export function AnalyticsDashboard() {
           <CardContent>
             <ResponsiveContainer width="100%" height={350}>
               <BarChart data={skillDistribution} margin={{ top: 20, right: 30, left: 20, bottom: 80 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
                 <XAxis 
                   dataKey="name" 
                   angle={-45}
                   textAnchor="end"
                   height={80}
                   fontSize={10}
-                  stroke="#374151"
+                  stroke="hsl(var(--muted-foreground))"
                   interval={0}
                 />
                 <YAxis stroke="#374151" />
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: 'white', 
-                    border: '1px solid #e5e7eb',
+                    backgroundColor: 'hsl(var(--card))', 
+                    border: '1px solid hsl(var(--border))',
                     borderRadius: '8px',
-                    color: '#374151'
+                    color: 'hsl(var(--card-foreground))'
                   }}
                   formatter={(value: number, name: string) => [
                     `${value} / 5`,
@@ -179,8 +179,8 @@ export function AnalyticsDashboard() {
                   ]}
                   labelFormatter={(label: string) => `Skill: ${label}`}
                 />
-                <Bar dataKey="average" fill="#3b82f6" name="Current Level" />
-                <Bar dataKey="required" fill="#10b981" name="Required Level" />
+                <Bar dataKey="average" fill="#58a6ff" name="Current Level" />
+                <Bar dataKey="required" fill="#238636" name="Required Level" />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
@@ -207,7 +207,7 @@ export function AnalyticsDashboard() {
                   labelLine={false}
                   label={({ name, percent }) => `${name} ${percent ? (percent * 100).toFixed(0) : '0'}%`}
                   outerRadius={80}
-                  fill="#3b82f6"
+                  fill="#58a6ff"
                   dataKey="value"
                 >
                   {[0, 1, 2].map((entry, index) => (
@@ -216,10 +216,10 @@ export function AnalyticsDashboard() {
                 </Pie>
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: 'white', 
-                    border: '1px solid #e5e7eb',
+                    backgroundColor: 'hsl(var(--card))', 
+                    border: '1px solid hsl(var(--border))',
                     borderRadius: '8px',
-                    color: '#374151'
+                    color: 'hsl(var(--card-foreground))'
                   }}
                   formatter={(value: number, name: string) => [
                     `${value} gaps`,
@@ -244,18 +244,18 @@ export function AnalyticsDashboard() {
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={categoryPerformance} layout="horizontal">
-                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
                 <XAxis type="number" stroke="#374151" />
                 <YAxis dataKey="name" type="category" width={100} stroke="#374151" />
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: 'white', 
-                    border: '1px solid #e5e7eb',
+                    backgroundColor: 'hsl(var(--card))', 
+                    border: '1px solid hsl(var(--border))',
                     borderRadius: '8px',
-                    color: '#374151'
+                    color: 'hsl(var(--card-foreground))'
                   }} 
                 />
-                <Bar dataKey="gap" fill="#ef4444" name="Average Gap" />
+                <Bar dataKey="gap" fill="#f85149" name="Average Gap" />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
@@ -271,25 +271,25 @@ export function AnalyticsDashboard() {
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={trainingData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
                 <XAxis 
                   dataKey="name" 
                   angle={-45}
                   textAnchor="end"
                   height={80}
                   fontSize={12}
-                  stroke="#374151"
+                  stroke="hsl(var(--muted-foreground))"
                 />
                 <YAxis stroke="#374151" />
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: 'white', 
-                    border: '1px solid #e5e7eb',
+                    backgroundColor: 'hsl(var(--card))', 
+                    border: '1px solid hsl(var(--border))',
                     borderRadius: '8px',
-                    color: '#374151'
+                    color: 'hsl(var(--card-foreground))'
                   }} 
                 />
-                <Bar dataKey="completion" fill="#10b981" name="Completion %" />
+                <Bar dataKey="completion" fill="#238636" name="Completion %" />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>

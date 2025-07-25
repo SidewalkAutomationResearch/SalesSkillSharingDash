@@ -57,6 +57,12 @@ export default {
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         
+        // GitHub-inspired chart colors
+        "github-green": "#238636",
+        "github-blue": "#58a6ff", 
+        "github-purple": "#8b5cf6",
+        "github-orange": "#fb8500",
+        "github-red": "#f85149",
       },
       borderRadius: {
         lg: "var(--radius)",
