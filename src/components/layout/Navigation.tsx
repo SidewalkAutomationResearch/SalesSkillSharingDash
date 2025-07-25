@@ -6,7 +6,6 @@ import {
   Grid3X3, 
   Users, 
   BarChart3, 
-  Settings,
   Search
 } from 'lucide-react';
 

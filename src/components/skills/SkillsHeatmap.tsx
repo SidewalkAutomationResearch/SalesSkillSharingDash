@@ -50,9 +50,6 @@ export function SkillsHeatmap() {
     return 'bg-gray-300/10 border-gray-300/20';
   };
 
-  const getSkillIntensity = (level: number) => {
-    return level * 20; // 0-100% intensity
-  };
 
   return (
     <div className="space-y-6">
@@ -109,7 +106,6 @@ export function SkillsHeatmap() {
                   {skills.map((skill) => {
                     const { level, gap } = getSkillLevel(employee.id, skill.id);
                     const colorClass = getSkillColor(level, gap);
-                    const intensity = getSkillIntensity(level);
                     
                     return (
                       <motion.div
@@ -165,7 +161,7 @@ export function SkillsHeatmap() {
             </div>
           </div>
           <p className="text-xs text-muted-foreground mt-4 leading-relaxed">
-            Each cell represents an employee's skill level for a specific competency. 
+            Each cell represents an employee's skill level for a specific competency.
             Darker colors indicate higher proficiency, while red indicators highlight skills needing development.
           </p>
         </CardContent>
