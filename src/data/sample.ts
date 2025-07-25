@@ -276,10 +276,10 @@ export const sampleSkillAssessments: SkillAssessment[] = [
   { employeeId: '15', skillId: '2', currentLevel: 2, targetLevel: 2, lastAssessed: '2024-01-22', assessedBy: 'manager', certifications: [] }, // Salesforce Administration
   { employeeId: '15', skillId: '3', currentLevel: 3, targetLevel: 3, lastAssessed: '2024-01-22', assessedBy: 'manager', certifications: [] }, // Solution Architecture
   { employeeId: '15', skillId: '4', currentLevel: 4, targetLevel: 4, lastAssessed: '2024-01-22', assessedBy: 'manager', certifications: [] }, // Customer Discovery
-  { employeeId: '15', skillId: '5', currentLevel: 4, targetLevel: 4, lastAssessed: '2024-01-22', assessedBy: 'manager', certifications: [] }, // API Integration
+  { employeeId: '15', skillId: '5', currentLevel: 3, targetLevel: 3, lastAssessed: '2024-01-22', assessedBy: 'manager', certifications: [] }, // API Integration
   { employeeId: '15', skillId: '6', currentLevel: 4, targetLevel: 4, lastAssessed: '2024-01-22', assessedBy: 'manager', certifications: [] }, // Presentation Skills
   { employeeId: '15', skillId: '7', currentLevel: 3, targetLevel: 3, lastAssessed: '2024-01-22', assessedBy: 'manager', certifications: [] }, // Cloud Architecture
-  { employeeId: '15', skillId: '8', currentLevel: 4, targetLevel: 4, lastAssessed: '2024-01-22', assessedBy: 'manager', certifications: [] } // HR / AI Tech
+  { employeeId: '15', skillId: '8', currentLevel: 5, targetLevel: 5, lastAssessed: '2024-01-22', assessedBy: 'manager', certifications: [] } // HR / AI Tech
 ];
 
 export const sampleTrainingPrograms: TrainingProgram[] = [
@@ -349,7 +349,7 @@ export const sampleKnowledgeResources: KnowledgeResource[] = [
 ];
 
 export const dashboardMetrics: DashboardMetrics = {
-  totalEmployees: 14,
+  totalEmployees: 15,
   averageSkillLevel: 3.4,
   skillsGapCount: 18,
   trainingCompletionRate: 82,
