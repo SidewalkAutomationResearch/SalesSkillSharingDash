@@ -183,6 +183,12 @@ export function AnalyticsDashboard() {
                 <Bar dataKey="required" fill="#238636" name="Required Level" />
               </BarChart>
             </ResponsiveContainer>
+            <div className="mt-3 pt-3 border-t border-border">
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                This chart compares current team skill levels against required benchmarks for each competency. 
+                Gaps indicate areas where focused training investments will yield the highest ROI for team performance.
+              </p>
+            </div>
           </CardContent>
         </Card>
 
@@ -219,15 +225,34 @@ export function AnalyticsDashboard() {
                     backgroundColor: 'hsl(var(--card))', 
                     border: '1px solid hsl(var(--border))',
                     borderRadius: '8px',
-                    color: 'hsl(var(--card-foreground))'
+                    color: 'hsl(var(--card-foreground))',
+                    maxWidth: '280px'
                   }}
-                  formatter={(value: number, name: string) => [
-                    `${value} gaps`,
-                    name
+                  formatter={(value: number, name: string, props: { payload?: { skills?: string } }) => [
+                    <div key="tooltip-content">
+                      <div className="font-semibold">{value} skill gaps</div>
+                      <div className="text-sm mt-1 text-muted-foreground">
+                        {name.includes('Urgent') && 'Requires immediate training intervention to meet role requirements'}
+                        {name.includes('Moderate') && 'Should be addressed in next quarter through targeted development'}
+                        {name.includes('Minor') && 'Can be improved through mentoring and on-the-job experience'}
+                      </div>
+                      {props.payload?.skills && (
+                        <div className="text-xs mt-2 text-muted-foreground">
+                          Skills: {props.payload.skills}
+                        </div>
+                      )}
+                    </div>,
+                    ''
                   ]}
                 />
               </PieChart>
             </ResponsiveContainer>
+            <div className="mt-3 pt-3 border-t border-border">
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Categorizes skill gaps by urgency level to prioritize training resource allocation. 
+                Urgent gaps require immediate attention to prevent performance bottlenecks and customer impact.
+              </p>
+            </div>
           </CardContent>
         </Card>
       </div>
@@ -258,6 +283,12 @@ export function AnalyticsDashboard() {
                 <Bar dataKey="gap" fill="#f85149" name="Average Gap" />
               </BarChart>
             </ResponsiveContainer>
+            <div className="mt-3 pt-3 border-t border-border">
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Shows average skill deficits by competency category to identify systemic training needs. 
+                Higher gaps indicate areas where team-wide upskilling programs would maximize business impact.
+              </p>
+            </div>
           </CardContent>
         </Card>
 
@@ -292,6 +323,12 @@ export function AnalyticsDashboard() {
                 <Bar dataKey="completion" fill="#238636" name="Completion %" />
               </BarChart>
             </ResponsiveContainer>
+            <div className="mt-3 pt-3 border-t border-border">
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Tracks completion rates across active training initiatives to measure program effectiveness. 
+                Low completion rates indicate need for program redesign or increased engagement strategies.
+              </p>
+            </div>
           </CardContent>
         </Card>
       </div>
