@@ -161,7 +161,7 @@ export function SkillsHeatmap() {
             </div>
           </div>
           <p className="text-xs text-muted-foreground mt-4 leading-relaxed">
-            Each cell represents an employee's skill level for a specific competency.
+            Each cell represents an employee&apos;s skill level for a specific competency.
             Darker colors indicate higher proficiency, while red indicators highlight skills needing development.
           </p>
         </CardContent>
