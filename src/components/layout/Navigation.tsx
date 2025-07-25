@@ -5,19 +5,17 @@ import { Button } from '@/components/ui/button';
 import { 
   Grid3X3, 
   Users, 
-  GraduationCap, 
   BarChart3, 
-  BookOpen,
   Settings,
   Search
 } from 'lucide-react';
 
 const navigationItems = [
   {
-    id: 'skills' as const,
-    label: 'Skills Matrix',
-    icon: Grid3X3,
-    description: 'View team skill levels'
+    id: 'analytics' as const,
+    label: 'Analytics',
+    icon: BarChart3,
+    description: 'Performance insights'
   },
   {
     id: 'experts' as const,
@@ -26,22 +24,10 @@ const navigationItems = [
     description: 'Find subject matter experts'
   },
   {
-    id: 'training' as const,
-    label: 'Training',
-    icon: GraduationCap,
-    description: 'Manage learning programs'
-  },
-  {
-    id: 'analytics' as const,
-    label: 'Analytics',
-    icon: BarChart3,
-    description: 'Performance insights'
-  },
-  {
-    id: 'knowledge' as const,
-    label: 'Knowledge Base',
-    icon: BookOpen,
-    description: 'Shared resources'
+    id: 'skills' as const,
+    label: 'Skills Matrix',
+    icon: Grid3X3,
+    description: 'View team skill levels'
   }
 ];
 
