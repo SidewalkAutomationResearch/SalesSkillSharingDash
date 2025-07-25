@@ -59,7 +59,7 @@ export function Navigation() {
           })}
         </nav>
 
-        <div className="ml-auto flex items-center">
+        <div className="ml-auto flex items-center" style={{ marginRight: '120px' }}>
           <div className="relative">
             <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-accent-blue" />
             <input
