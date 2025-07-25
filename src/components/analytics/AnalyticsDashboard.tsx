@@ -1,0 +1,299 @@
+'use client';
+
+import { useDashboardStore } from '@/store/dashboard-store';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+import { TrendingUp, Users, Award, AlertTriangle } from 'lucide-react';
+
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'];
+
+export function AnalyticsDashboard() {
+  const { 
+    employees, 
+    skills, 
+    skillAssessments, 
+    trainingPrograms,
+    metrics,
+    getSkillGaps
+  } = useDashboardStore();
+
+  // Calculate skill distribution data
+  const skillDistribution = skills.map(skill => {
+    const assessments = skillAssessments.filter(a => a.skillId === skill.id);
+    const totalLevel = assessments.reduce((sum, a) => sum + a.currentLevel, 0);
+    const averageLevel = assessments.length > 0 ? totalLevel / assessments.length : 0;
+    
+    return {
+      name: skill.name,
+      average: Number(averageLevel.toFixed(1)),
+      required: skill.requiredLevel,
+      gap: Math.max(0, skill.requiredLevel - averageLevel)
+    };
+  });
+
+  // Calculate category performance
+  interface CategoryAcc {
+    [key: string]: {
+      category: string;
+      skills: typeof skills;
+      totalGap: number;
+      assessmentCount: number;
+    };
+  }
+  
+  const categoryPerformance = Object.values(skills.reduce((acc: CategoryAcc, skill) => {
+    if (!acc[skill.category]) {
+      acc[skill.category] = {
+        category: skill.category,
+        skills: [],
+        totalGap: 0,
+        assessmentCount: 0
+      };
+    }
+    
+    const skillAssessmentCount = skillAssessments.filter(a => a.skillId === skill.id).length;
+    const skillGap = skillDistribution.find(s => s.name === skill.name)?.gap || 0;
+    
+    acc[skill.category].skills.push(skill);
+    acc[skill.category].totalGap += skillGap;
+    acc[skill.category].assessmentCount += skillAssessmentCount;
+    
+    return acc;
+  }, {})).map((cat) => ({
+    name: cat.category.replace('_', ' ').replace(/\b\w/g, (l: string) => l.toUpperCase()),
+    gap: Number(cat.totalGap.toFixed(1)),
+    coverage: Math.round((cat.assessmentCount / (cat.skills.length * employees.length)) * 100)
+  }));
+
+  // Training progress data
+  const trainingData = trainingPrograms.map(program => ({
+    name: program.name,
+    completion: program.completionRate,
+    enrolled: program.enrolledCount
+  }));
+
+  // Skill gaps by urgency
+  const skillGaps = getSkillGaps();
+  const urgentGaps = skillGaps.filter(gap => gap.gap >= 3);
+  const moderateGaps = skillGaps.filter(gap => gap.gap === 2);
+  const minorGaps = skillGaps.filter(gap => gap.gap === 1);
+
+  return (
+    <div className="space-y-6">
+      <div>
+        <h2 className="text-3xl font-bold tracking-tight">Analytics Dashboard</h2>
+        <p className="text-muted-foreground">
+          Performance metrics and insights for skills development
+        </p>
+      </div>
+
+      {/* Key Metrics */}
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Team Members</CardTitle>
+            <Users className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{metrics.totalEmployees}</div>
+            <p className="text-xs text-muted-foreground">
+              +12% from last month
+            </p>
+          </CardContent>
+        </Card>
+        
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Avg Skill Level</CardTitle>
+            <TrendingUp className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{metrics.averageSkillLevel}</div>
+            <p className="text-xs text-muted-foreground">
+              +0.3 from last month
+            </p>
+          </CardContent>
+        </Card>
+        
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Skills Gaps</CardTitle>
+            <AlertTriangle className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{metrics.skillsGapCount}</div>
+            <p className="text-xs text-muted-foreground">
+              -2 from last month
+            </p>
+          </CardContent>
+        </Card>
+        
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Training Completion</CardTitle>
+            <Award className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{metrics.trainingCompletionRate}%</div>
+            <p className="text-xs text-muted-foreground">
+              +5% from last month
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Charts Row 1 */}
+      <div className="grid gap-6 md:grid-cols-2">
+        <Card>
+          <CardHeader>
+            <CardTitle>Skills Performance Overview</CardTitle>
+            <CardDescription>
+              Current vs. required skill levels across all competencies
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={skillDistribution}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis 
+                  dataKey="name" 
+                  angle={-45}
+                  textAnchor="end"
+                  height={80}
+                  fontSize={12}
+                />
+                <YAxis />
+                <Tooltip />
+                <Bar dataKey="average" fill="#8884d8" name="Current Level" />
+                <Bar dataKey="required" fill="#82ca9d" name="Required Level" />
+              </BarChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Skills Gap Distribution</CardTitle>
+            <CardDescription>
+              Gap severity across different skill categories
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie
+                  data={[
+                    { name: 'Urgent (3+ levels)', value: urgentGaps.length, color: '#FF8042' },
+                    { name: 'Moderate (2 levels)', value: moderateGaps.length, color: '#FFBB28' },
+                    { name: 'Minor (1 level)', value: minorGaps.length, color: '#00C49F' }
+                  ]}
+                  cx="50%"
+                  cy="50%"
+                  labelLine={false}
+                  label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                  outerRadius={80}
+                  fill="#8884d8"
+                  dataKey="value"
+                >
+                  {[0, 1, 2].map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Pie>
+                <Tooltip />
+              </PieChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Charts Row 2 */}
+      <div className="grid gap-6 md:grid-cols-2">
+        <Card>
+          <CardHeader>
+            <CardTitle>Category Performance</CardTitle>
+            <CardDescription>
+              Skills gap analysis by category
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={categoryPerformance} layout="horizontal">
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis type="number" />
+                <YAxis dataKey="name" type="category" width={100} />
+                <Tooltip />
+                <Bar dataKey="gap" fill="#ff7c7c" name="Average Gap" />
+              </BarChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Training Program Progress</CardTitle>
+            <CardDescription>
+              Completion rates for active training programs
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={trainingData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis 
+                  dataKey="name" 
+                  angle={-45}
+                  textAnchor="end"
+                  height={80}
+                  fontSize={12}
+                />
+                <YAxis />
+                <Tooltip />
+                <Bar dataKey="completion" fill="#82ca9d" name="Completion %" />
+              </BarChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Skills Gaps Detail */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Critical Skills Gaps</CardTitle>
+          <CardDescription>
+            Employees with the largest skill gaps requiring immediate attention
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            {urgentGaps.slice(0, 10).map((gap, index) => (
+              <div key={index} className="flex items-center justify-between p-4 border rounded-lg">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                    {gap.employee.name.split(' ').map(n => n[0]).join('')}
+                  </div>
+                  <div>
+                    <div className="font-medium">{gap.employee.name}</div>
+                    <div className="text-sm text-muted-foreground">
+                      {gap.employee.role}
+                    </div>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div className="font-medium">{gap.skill.name}</div>
+                  <div className="text-sm text-muted-foreground">
+                    Gap: {gap.gap} levels
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-red-100 text-red-800">
+                    Critical
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
